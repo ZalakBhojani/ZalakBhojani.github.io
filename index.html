@@ -1,290 +1,87 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfolio</title>
+
+    <!-- Bootstrap css files -->
+    <!-- <link rel="stylesheet" href="./css/bootstrap.min.css" /> -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+      integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l"
+      crossorigin="anonymous"
     />
-    <meta name="description" content="zalak Zalak Bhojani bhojani software" />
-    <meta name="author" content="Zalak" />
-    <title>Resume - Zalak Bhojani</title>
-    <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico" />
-    <!-- Font Awesome icons -->
+    <!-- font awesome icons -->
+    <link rel="stylesheet" href="./css/all.min.css" />
+
+    <!-- custom css files   -->
+    <link rel="stylesheet" href="./css/styles.css" />
+  </head>
+  <body>
+    <!--  ======================= Start Header Area ============================== -->
+    <header class="header_area">
+      <div class="main_menu">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+          <a class="navbar-brand" href="#">Hey 👋</a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-toggle="collapse"
+            data-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+              <li class="nav-item active">
+                <a class="nav-link" href="#"
+                  >Home <span class="sr-only">(current)</span></a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Features</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Pricing</a>
+              </li>
+              <li class="nav-item">
+                <a
+                  class="nav-link disabled"
+                  href="#"
+                  tabindex="-1"
+                  aria-disabled="true"
+                  >Disabled</a
+                >
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+    </header>
+    <!--  ======================= End Header Area ============================== -->
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script
-      src="https://kit.fontawesome.com/78ddf78559.js"
+      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
       crossorigin="anonymous"
     ></script>
-    <!-- Google fonts-->
-    <link
-      href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:500,700"
-      rel="stylesheet"
-      type="text/css"
-    />
-    <link
-      href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i"
-      rel="stylesheet"
-      type="text/css"
-    />
-    <!-- Core theme CSS (includes Bootstrap)-->
-    <link href="css/styles.css" rel="stylesheet" />
-  </head>
-
-  <body id="page-top">
-    <!-- Navigation-->
-    <nav
-      class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top"
-      id="sideNav"
-    >
-      <a class="navbar-brand js-scroll-trigger" href="#page-top">
-        <span class="d-block d-lg-none">Zalak Bhojani</span>
-        <span class="d-none d-lg-block"
-          ><img
-            class="img-fluid img-profile rounded-circle mx-auto mb-2"
-            src="assets/img/profile.jpg"
-            alt=""
-        /></span>
-      </a>
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-toggle="collapse"
-        data-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#about">About</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#education"
-              >Education</a
-            >
-          </li>
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#experience"
-              >Experience</a
-            >
-          </li>
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#skills">Skills</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#interests"
-              >Interests</a
-            >
-          </li>
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#awards"
-              >Achievements</a
-            >
-          </li>
-        </ul>
-      </div>
-    </nav>
-    <!-- Page Content-->
-    <div class="container-fluid p-0">
-      <!-- About-->
-      <section class="resume-section" id="about">
-        <div class="resume-section-content">
-          <h1 class="mb-0">
-            Zalak
-            <span class="text-primary">Bhojani</span>
-          </h1>
-          <div class="subheading mb-5">
-            An aspiring software engineer
-            <a href="mailto:zalakbhojani@yahoo.com">zalakbhojani@yahoo.com</a>
-          </div>
-          <p class="lead mb-5">
-            I want to succeed in a stimulating and challenging environment,
-            building the success of peers while I experience advancement
-            opportunities. Self-motivated, creative and technically sound
-            information-technology student with a keen interest in learning new
-            technologies.
-          </p>
-          <div class="social-icons">
-            <a
-              class="social-icon"
-              href="https://www.linkedin.com/in/zalak-bhojani-27495b36/"
-              target="_blank"
-              ><i class="fab fa-linkedin-in"></i
-            ></a>
-            <a
-              class="social-icon"
-              href="https://github.com/ZalakBhojani"
-              target="_blank"
-              ><i class="fab fa-github"></i
-            ></a>
-            <a class="social-icon" href="#"><i class="fab fa-twitter"></i></a>
-            <a
-              class="social-icon"
-              href="https://drive.google.com/file/d/1kxCEMfQB9QTQAwPezxVMejfh6-WnN2KI/view?usp=sharing"
-              target="_blank"
-              ><i class="fas fa-file"></i
-            ></a>
-          </div>
-        </div>
-      </section>
-      <hr class="m-0" />
-      <!-- Education-->
-      <section class="resume-section" id="education">
-        <div class="resume-section-content">
-          <h2 class="mb-5">Education</h2>
-          <div
-            class="d-flex flex-column flex-md-row justify-content-between mb-5"
-          >
-            <div class="flex-grow-1">
-              <h3 class="mb-0">K. J. Somaiya College of Engineering</h3>
-              <div class="subheading mb-3">Bachelor of Technology</div>
-              <div>Computer Engineering</div>
-              <p>GPA: 8.35</p>
-            </div>
-            <div class="flex-shrink-0">
-              <span class="text-primary">August 2018 - May 2022</span>
-            </div>
-          </div>
-          <div
-            class="d-flex flex-column flex-md-row justify-content-between mb-5"
-          >
-            <div class="flex-grow-1">
-              <h3 class="mb-0">Rustomjee Junior College</h3>
-              <div class="subheading mb-3">
-                Maharashtra State Board of Higher Secondary Education
-              </div>
-              <p>Percentage: 78%</p>
-            </div>
-            <div class="flex-shrink-0">
-              <span class="text-primary">June 2016 - May 2018</span>
-            </div>
-          </div>
-          <div
-            class="d-flex flex-column flex-md-row justify-content-between mb-5"
-          >
-            <div class="flex-grow-1">
-              <h3 class="mb-0">St. Soldier Public School</h3>
-              <div class="subheading mb-3">
-                Maharashtra State Board of Higher Secondary Education
-              </div>
-              <p>Percentage: 91%</p>
-            </div>
-            <div class="flex-shrink-0">
-              <span class="text-primary"> - May 2016</span>
-            </div>
-          </div>
-        </div>
-      </section>
-      <hr class="m-0" />
-      <!-- Experience-->
-      <section class="resume-section" id="experience">
-        <div class="resume-section-content">
-          <h2 class="mb-5">Experience</h2>
-          <div
-            class="d-flex flex-column flex-md-row justify-content-between mb-5"
-          >
-            <div class="flex-grow-1">
-              <h3 class="mb-0">Technical Assistant</h3>
-              <div class="subheading mb-3">Synergy Community</div>
-              <p>
-                Data structure related - Lorem ipsum, dolor sit amet consectetur
-                adipisicing elit. Voluptatum, dolor rerum minus exercitationem
-                et neque, temporibus numquam, nobis ex quae modi magnam ipsam
-                impedit fugiat laudantium cupiditate dolore laboriosam ab!
-              </p>
-            </div>
-            <div class="flex-shrink-0">
-              <span class="text-primary">August 2020 - September 2020</span>
-            </div>
-          </div>
-          <div
-            class="d-flex flex-column flex-md-row justify-content-between mb-5"
-          >
-            <div class="flex-grow-1">
-              <h3 class="mb-0">Web App using Flask</h3>
-              <div class="subheading mb-3">
-                K.J. Somaiya College of Engineering
-              </div>
-              <p>
-                Some flask related - Lorem, ipsum dolor sit amet consectetur
-                adipisicing elit. Veritatis eius odio et modi expedita nulla
-                perspiciatis pariatur nisi voluptates, facere id, quis mollitia
-                animi doloremque saepe excepturi amet earum quo.
-              </p>
-            </div>
-            <div class="flex-shrink-0">
-              <span class="text-primary">June 2019 - July 2019</span>
-            </div>
-          </div>
-        </div>
-      </section>
-      <hr class="m-0" />
-
-      <!-- Skills-->
-      <section class="resume-section" id="skills">
-        <div class="resume-section-content">
-          <h2 class="mb-5">Skills</h2>
-          <div class="subheading mb-3">Programming Languages & Tools</div>
-          <ul class="list-inline dev-icons">
-            <div class="progress" style="height: 36px">
-              <div class="progress-bar" style="width: 70%; height: 36px">
-                70%
-              </div>
-            </div>
-            <li class="list-inline-item"><i class="fab fa-html5"></i></li>
-            <li class="list-inline-item"><i class="fab fa-css3-alt"></i></li>
-            <li class="list-inline-item"><i class="fab fa-js-square"></i></li>
-            <li class="list-inline-item"><i class="fab fa-react"></i></li>
-            <li class="list-inline-item"><i class="fab fa-node-js"></i></li>
-            <li class="list-inline-item"><i class="fab fa-python"></i></li>
-          </ul>
-        </div>
-      </section>
-      <hr class="m-0" />
-      <!-- Interests-->
-      <section class="resume-section" id="interests">
-        <div class="resume-section-content">
-          <h2 class="mb-5">Interests</h2>
-          <p>
-            Apart from being a web developer, I enjoy most of my time being
-            outdoors. In the winter, I am an avid skier and novice ice climber.
-            During the warmer months here in Colorado, I enjoy mountain biking,
-            free climbing, and kayaking.
-          </p>
-          <p class="mb-0">
-            When forced indoors, I enjoy competitive coding, I follow a number
-            of sci-fi and fantasy genre movies and television shows and I spend
-            a large amount of my free time exploring the latest technology
-            advancements in the back-end web development world.
-          </p>
-        </div>
-      </section>
-      <hr class="m-0" />
-      <!-- Achievements-->
-      <section class="resume-section" id="awards">
-        <div class="resume-section-content">
-          <h2 class="mb-5">Achievements</h2>
-          <ul class="fa-ul mb-0">
-            <li>
-              <span class="fa-li"
-                ><i class="fas fa-trophy text-warning"></i
-              ></span>
-              I do not need to mention
-              <sup></sup>
-            </li>
-          </ul>
-        </div>
-      </section>
-    </div>
-    <!-- Bootstrap core JS-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
-    <!-- Third party plugin JS-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
-    <!-- Core theme JS-->
-    <script src="js/scripts.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+      integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"
+      integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF"
+      crossorigin="anonymous"
+    ></script>
   </body>
 </html>
