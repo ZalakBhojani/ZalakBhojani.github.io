@@ -16,7 +16,8 @@
     />
     <!-- font awesome icons -->
     <link rel="stylesheet" href="./assests/css/all.min.css" />
-
+    <!-- iconify icons -->
+    <script src="https://code.iconify.design/1/1.0.7/iconify.min.js"></script>
     <!-- custom css files   -->
     <link rel="stylesheet" href="./assests/css/styles.css" />
   </head>
@@ -24,7 +25,7 @@
     <!--  ======================= Start Header Area ============================== -->
     <header class="header_area">
       <div class="main_menu">
-        <nav class="navbar navbar-expand-lg navbar-dark">
+        <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
           <a class="navbar-brand" href="#">Hey 👋</a>
           <button
             class="navbar-toggler"
@@ -78,70 +79,207 @@
     <main class="site__main">
       <p>&nbsp;</p>
       <!-- ======================== Start Banner Area ============================== -->
-      <section class="site__banner">
-        <div class="container">
-          <div class="row" id="row_1">
-            <div class="col-sm-4 col-md-4 col-lg-4 col-xl-4">
-              <img src="./assests/img/profile.jpg" alt="Zalak" class="img-dp" />
-              <!-- <img src="" alt="some gif" class="img-gif"> -->
-            </div>
-            <div class="col-sm-8 col-md-8 col-lg-8 col-xl-8">
-              <h2 class="title">
-                Zalak Bhojani,<br />
-                <span id="blue__text">CSE Student → KJSCE</span>
-              </h2>
-              <br />
-              <h4 class="description" id="tracks">
-                Hi there! My name is Zalak and I am an Software Engineer from
-                India.
-              </h4>
-              <h4 class="description" id="tracks">
-                <p>
-                  At the moment, I'm trying out different frontend techstack and
-                  working on projects such as
-                  <a href="#" id="blue__text"><b>YoutubeSync</b></a
-                  >. I enjoy competitive programming, reading books, watching
-                  anime and playing music in my free time.
-                </p>
-              </h4>
-              <div class="social_box">
-                <ul class="social_list">
-                  <a target="_blank" href="https://twitter.com/Zalak00">
-                    <li class="social_logo">
-                      <i class="fab fa-twitter"></i>
-                    </li>
-                  </a>
-                  <a
-                    target="_blank"
-                    href="https://linkedin.com/in/zalak-bhojani"
-                  >
-                    <li class="social_logo">
-                      <i class="fab fa-linkedin-in"></i>
-                    </li>
-                  </a>
-                  <a target="_blank" href="https://github.com/ZalakBhojani">
-                    <li class="social_logo">
-                      <i class="fab fa-github"></i>
-                    </li>
-                  </a>
-                  <a target="_blank" href="https://medium.com/@zalakbhojani">
-                    <li class="social_logo">
-                      <i class="fab fa-medium-m"></i>
-                    </li>
-                  </a>
-                  <a target="_blank" href="#">
-                    <li class="social_logo">
-                      <i class="fab fa-instagram"></i>
-                    </li>
-                  </a>
-                </ul>
-              </div>
+      <!-- First Row -->
+      <!-- <section class="site__banner"> -->
+      <div class="container">
+        <div class="row" id="row_1">
+          <div class="col-sm-4 col-md-4 col-lg-4 col-xl-4">
+            <img src="./assests/img/profile.jpg" alt="Zalak" class="img-dp" />
+            <!-- <img src="#" alt="some gif" class="img-gif"> -->
+          </div>
+          <div class="col-sm-8 col-md-8 col-lg-8 col-xl-8">
+            <h2 class="title">
+              Zalak Bhojani,<br />
+              <span id="blue__text">CSE Student → KJSCE</span>
+            </h2>
+            <br />
+            <h4 class="description" id="tracks">
+              Hi there! My name is Zalak and I am an aspiring Software Developer
+              from India.
+            </h4>
+            <h4 class="description" id="tracks">
+              <p>
+                At the moment, I'm trying out different frontend techstack and
+                working on projects such as
+                <a href="#" id="blue__text"><b>YoutubeSync</b></a
+                >. I enjoy competitive programming, reading books, watching
+                anime and playing music in my free time.
+              </p>
+            </h4>
+            <h4>
+              <p>
+                <span id="blue__text">PS </span>- Trying to be a night owl 🦉
+              </p>
+            </h4>
+            <div class="social_box">
+              <ul class="social_list">
+                <a target="_blank" href="https://twitter.com/Zalak00">
+                  <li class="social_logo">
+                    <i class="fab fa-twitter"></i>
+                  </li>
+                </a>
+                <a target="_blank" href="https://linkedin.com/in/zalak-bhojani">
+                  <li class="social_logo">
+                    <i class="fab fa-linkedin-in"></i>
+                  </li>
+                </a>
+                <a target="_blank" href="https://github.com/ZalakBhojani">
+                  <li class="social_logo">
+                    <i class="fab fa-github"></i>
+                  </li>
+                </a>
+                <a
+                  target="_blank"
+                  href="https://www.codechef.com/users/zalak_b"
+                >
+                  <li class="social_logo">
+                    <span
+                      class="iconify"
+                      data-icon="simple-icons:codechef"
+                      data-inline="false"
+                      style="color: rgb(52, 133, 255)"
+                    ></span>
+                  </li>
+                </a>
+                <a
+                  target="_blank"
+                  href="https://www.codeforces.com/users/zalak_b"
+                >
+                  <li class="social_logo">
+                    <svg
+                      class="cf-footer"
+                      xmlns="http://www.w3.org/2000/svg"
+                      xmlns:xlink="http://www.w3.org/1999/xlink"
+                      aria-hidden="true"
+                      focusable="false"
+                      width="1em"
+                      height="1em"
+                      style="
+                        -ms-transform: rotate(360deg);
+                        -webkit-transform: rotate(360deg);
+                        transform: rotate(360deg);
+                        fill:rgb(52, 133, 255);
+                      "
+                      preserveAspectRatio="xMidYMid meet"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        d="M4.5 7.5A1.5 1.5 0 0 1 6 9v10.5A1.5 1.5 0 0 1 4.5 21h-3C.673 21 0 20.328 0 19.5V9c0-.828.673-1.5 1.5-1.5h3zm9-4.5A1.5 1.5 0 0 1 15 4.5v15a1.5 1.5 0 0 1-1.5 1.5h-3c-.827 0-1.5-.672-1.5-1.5v-15c0-.828.673-1.5 1.5-1.5h3zm9 7.5A1.5 1.5 0 0 1 24 12v7.5a1.5 1.5 0 0 1-1.5 1.5h-3a1.5 1.5 0 0 1-1.5-1.5V12a1.5 1.5 0 0 1 1.5-1.5h3z"
+                      ></path>
+                    </svg>
+                  </li>
+                </a>
+                <a target="_blank" href="https://medium.com/@zalakbhojani">
+                  <li class="social_logo">
+                    <i class="fab fa-medium-m"></i>
+                  </li>
+                </a>
+
+                <a target="_blank" href="mailto:zalakbhojani@yahoo.com">
+                  <li class="social_logo">
+                    <i class="fas fa-envelope"></i>
+                  </li>
+                </a>
+              </ul>
             </div>
           </div>
         </div>
-      </section>
 
-      <!-- ======================== End Banner Area ============================== -->
+        <!-- </section> -->
+        <!-- ===================== End First Row ========================= -->
+
+        <!-- ====================== Second Row =========================== -->
+        <p id="work">&nbsp;</p>
+        <div class="row" id="row_2">
+          <div class="col-md-12 col-lg-6 col-xl-6">
+            <h2 class="title" id="tracks">What I do?</h2>
+            <br />
+            <h5 class="description"><p>An approximate lot of things? 🏓</p></h5>
+            <h5 class="description">
+              <p>
+                I read a lot and you'd often find me hooked to books, reading
+                about newer technologies such as Node.js and React.js and
+                various algorithm.
+              </p>
+            </h5>
+            <h5 class="description">
+              <p>
+                I am an occasional <i>(wannable)</i> competitive programmer and
+                you could find in as <span id="blue__text">zalak_b</span> at
+                codechef, codeforces and atcoder
+              </p>
+            </h5>
+          </div>
+          <div class="col-md-12 col-lg-6 col-xl-6">
+            <h3 class="title" id="tracks">Skills</h3>
+            <br />
+            <h5 class="description">
+              <p>
+                I have good experience with Python, Node.js and frontend
+                frameworks like React.js. I usually write algorithms in C++.
+              </p>
+              <ul class="skill-bars">
+                <li>
+                  <strong>React.js</strong>
+                  <!-- <div class="progress percent50"><span>50%</span></div> -->
+                  <div class="progress">
+                    <div
+                      class="progress-bar"
+                      role="progressbar"
+                      style="width: 60%"
+                      aria-valuenow="60"
+                      aria-valuemin="0"
+                      aria-valuemax="100"
+                    ></div>
+                  </div>
+                </li>
+                <li>
+                  <strong>Node.js</strong>
+                  <div class="progress">
+                    <div
+                      class="progress-bar"
+                      role="progressbar"
+                      style="width: 50%"
+                      aria-valuenow="50"
+                      aria-valuemin="0"
+                      aria-valuemax="100"
+                    ></div>
+                  </div>
+                </li>
+                <li>
+                  <strong>Python</strong>
+                  <div class="progress">
+                    <div
+                      class="progress-bar"
+                      role="progressbar"
+                      style="width: 60%"
+                      aria-valuenow="60"
+                      aria-valuemin="0"
+                      aria-valuemax="100"
+                    ></div>
+                  </div>
+                </li>
+                <li>
+                  <strong>C++</strong>
+                  <div class="progress">
+                    <div
+                      class="progress-bar"
+                      role="progressbar"
+                      style="width: 45%"
+                      aria-valuenow="45"
+                      aria-valuemin="0"
+                      aria-valuemax="100"
+                    ></div>
+                  </div>
+                </li>
+              </ul>
+            </h5>
+          </div>
+        </div>
+
+        <!-- ====================== End Second Row =========================== -->
+        <!-- ======================== End Banner Area ============================== -->
+      </div>
     </main>
     <!-- ======================== End Main Area ============================== -->
 

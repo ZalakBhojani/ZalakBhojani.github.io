@@ -17,6 +17,12 @@ h4{
     line-height: 1.5em;
 }
 
+h5{
+    font-size: 1.1345rem;
+    line-height: 1.65em;
+    margin-bottom: 15px;
+}
+
 /* start navigation */
 
 /* .header_area .main_menu{
@@ -56,24 +62,34 @@ h4{
     border-radius: 50%;
 }
 
+/* .img-gif{
+    width: 50%;
+    position: relative;
+    top: -70px;
+} */
+
 /* site_main  */
 
 .site__main{
-    padding: 5vh;
+    padding: 10vh 5vw;
 }
 
 
-/* site-banner styles */
+/* row-1 styles */
+
+#row_1{
+    padding-top: 5vh;
+}
 
 .title {
     padding-top: 3vh;
-    font-family: var(--ptMono); 
+    font-family: var(--ptMono), monospace; 
     font-weight: 600;
 }
 
 .description {
-    font-family: var(--jost); 
-    font-weight: 200;
+    font-family: var(--jost), sans-serif; 
+    font-weight: 300;
 }
 
 #blue__text{
@@ -92,6 +108,29 @@ h4{
 }
 
 .social_list > a {
-    size: 10rem;
-    padding: 1vh 10px 0 0;
+    size: rem;
+    padding: 1vh 25px 0 0;
+    font-size: 1.3em;
+}
+
+
+
+/* row-2 */
+
+#row_2{
+    padding-top: 5vh;
+}
+
+.skill-bars{
+    padding-left: 0;
+    padding-right: 4vw;
+    list-style: none;
+}
+
+.progress{
+    height: 5px;
+}
+
+.skill-bars > li{
+    padding-bottom: 1vh;
 }
