@@ -109,7 +109,7 @@ h5{
 
 .social_list > a {
     size: rem;
-    padding: 1vh 25px 0 0;
+    margin: 1vh 25px 0 0;
     font-size: 1.3em;
 }
 
@@ -133,4 +133,26 @@ h5{
 
 .skill-bars > li{
     padding-bottom: 1vh;
+}
+
+
+
+/* Footer */
+
+#footer{
+    /* width: 100%; */
+    margin: 5rem 0;
+    background-color: #0f1018  !important;
+}
+
+#footer > .social_box, .social_list {
+    margin: 1rem 0 2rem 0 !important;
+}
+
+/* copyright */
+
+.copyright > a{
+    color: #f0f0f0;
+    font-family: var(--ptMono), monospace;
+    font-weight: 800;
 }
