@@ -71,7 +71,7 @@ h5{
 /* site_main  */
 
 .site__main{
-    padding: 10vh 5vw;
+    padding: 5vh 5vw 10vh 5vw;
 }
 
 
@@ -142,6 +142,7 @@ h5{
 #footer{
     /* width: 100%; */
     margin: 5rem 0;
+    padding: 0 5vw;
     background-color: #0f1018  !important;
 }
 
