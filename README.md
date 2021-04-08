@@ -6,5 +6,6 @@
 - [X] Adding Notes section
 - [ ] Adding Play section
 - [ ] Adding 404 Not Found
+- [ ] Adding Contact Form
 - [ ] Adding Loading animation
 
