@@ -1,6 +1,6 @@
 # Portfolio
 
-- [ ] Adding Projects
+- [X] Adding Projects
 - [X] Adding Footer
 - [X] Adding Trasparent navbar
 - [X] Adding Notes section
