@@ -100,7 +100,7 @@
           <div class="col-sm-8 col-md-8 col-lg-8 col-xl-8">
             <h2 class="title">
               Zalak Bhojani,<br />
-              <span id="blue__text">CSE Student → KJSCE</span>
+              <span class="typedjs" id="blue__text"></span>
             </h2>
             <br />
             <h4 class="description" id="tracks">
@@ -3867,7 +3867,27 @@
     <!-- ======================== End Footer Area ============================== -->
     <!-- Custom JavaScript -->
     <script src="./assests/js/main.js"></script>
-    <!-- Optional JavaScript -->
+    <!-- Other JavaScript files -->
+    <!-- typed.js JavaScript -->
+    <script src="./assests/js/typed.js"></script>
+    <script>
+      var typed = new Typed(".typedjs", {
+        strings: [
+          "CSE Student → KJSCE",
+          "Competitive Programmer",
+          // "Open-Source Enthusiast",
+          "Software Engineer",
+          "Automation Scripter",
+          "Hackathon Aficionado",
+          "Content Writer",
+          "Table Tennis Player"
+        ],
+        loop: true,
+        typeSpeed: 50,
+        backSpeed: 50,
+        cursorChar: '_',
+      });
+    </script>
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script
       src="https://code.jquery.com/jquery-3.5.1.slim.min.js"

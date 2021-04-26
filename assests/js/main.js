@@ -1,5 +1,4 @@
 function smoothScroll(target, duration) {
-  
   var targetPosition = target.getBoundingClientRect().top;
   var startPosition = window.pageYOffset || window.scrollY;
   var startTime = null;
