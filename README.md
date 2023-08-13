@@ -1,4 +1,4 @@
-# Portfolio
+## This branch contains the older portfolio website
 
 - [X] Adding Projects
 - [X] Adding Footer
