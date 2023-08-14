@@ -9,8 +9,9 @@ defaultContentLanguage: en
 hasCJKLanguage: true
 permalinks:
   posts: /posts/:title/
+  stream: /stream/:title/
 
-paginate: 3
+paginate: 5
 
 googleAnalytics: G-VD9FSHKQ8C
 disqusShortname: your-disqus-shortname
@@ -53,6 +54,9 @@ params:
   # Optional Configuration
   ###########################################
 
+  # To enable About section in the navigation home, set this to `true`. 
+  # Right now, home contains the information
+  enableAboutAuthor: false
   # To enable RSS, you could set `enableRSS: true`, default is `true`
   enableRSS: false
   # To enable comments, you may need to set `disqusShortname`
@@ -73,15 +77,18 @@ params:
   # Extra links in navigation
   links:
     ## e.g.
-    # - name: Project
-    #   path: /project
+    - name: Blogs
+      path: /blogs
+
+    - name: Stream
+      path: /stream
 
   # You can put your custom css and js to `static` directory, or use remote css and js files which start with `http://` or `https://`
   customCSS:
     ## e.g.
-    # - css/custom.css # local css in `static/css/custom.css`
+    - css/custom.css # local css in `static/css/custom.css`
     # - https://example.com/custom.css # remote css
   customJS:
     ## e.g.
-    # - js/custom.js # local js in `static/js/custom.js`
+    - js/script.js # local js in `static/js/custom.js`
     # - https://example.com/custom.js # remote js
