@@ -79,9 +79,9 @@ params:
   links:
     ## e.g.
     - name: Blogs
-      path: https://zalakb.substack.com/
+      path: /blogs
 
-    - name: Stream
+    - name: Life
       path: /stream
 
   # You can put your custom css and js to `static` directory, or use remote css and js files which start with `http://` or `https://`

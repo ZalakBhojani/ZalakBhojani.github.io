@@ -1,0 +1,11 @@
+# Life events shown on the /stream page ("Life" in the nav).
+# Rendered top to bottom in this order — keep newest first.
+# Fields: date (freeform display text), text (markdown ok), link (optional).
+#
+# - date: Mar 2026
+#   text: Something happened
+#   link: https://example.com/details
+- date: 24 Sep 2026
+  text: Revived this site — fixed the broken deployment.
+- date: 14 Aug 2023
+  text: Reramped the personal site - will fix some issues
