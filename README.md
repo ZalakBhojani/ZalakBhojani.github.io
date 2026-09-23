@@ -1,213 +1,83 @@
-# Hugo Theme Mini
+# zalakbhojani.github.io
 
-English | [简体中文](https://github.com/nodejh/hugo-theme-mini/tree/master/README-zh_CN.md)
+Personal site of Zalak Bhojani, built with [Hugo](https://gohugo.io/) and
+deployed to GitHub Pages via GitHub Actions.
 
-A fast, minimalist and responsive hugo theme.
+**Live at: https://zalakbhojani.github.io/**
 
-![./images/screenshot.png](https://raw.githubusercontent.com/nodejh/hugo-theme-mini/master/images/screenshot.png)
+## How this repo is wired (read this first)
 
-- [Online demo](https://nodejh.github.io/hugo-theme-mini)
-- [Example Site Source](https://github.com/nodejh/hugo-theme-mini/tree/master/exampleSite)
+- **Site config, life events, and the Substack feed snapshot live here.**
+- **Page content and templates live in the theme submodule** at `themes/mini`
+  — a private fork: [`hugo-theme-mini-zbhojani`](https://github.com/ZalakBhojani/hugo-theme-mini-zbhojani).
+  The homepage bio (`layouts/partials/info.html`), the about page, and all
+  section templates are in there. Changing them means: commit + push in the
+  submodule, then commit the submodule pointer bump here.
+- This repo **must stay public** — GitHub Pages on the free plan does not
+  publish private repos (that is what took the site down in the past).
 
-Features:
+## Common tasks
 
-- Fast
-- Minimalist
-- Responsive
-- Archive
-- Tags
+### Add a life event (the "Life" page, `/stream`)
 
-
-## 1. Installation
-
-
-### 1.1 As a Hugo Module (recommended)
-
-> ⚠️ If you installed a [Hugo binary](https://gohugo.io/getting-started/installing/#binary-cross-platform), you may not have Go installed on your machine. To check if Go is installed:
-> ```
-> $ go version
-> ```
->  Go modules were considered production ready in v1.14. [Download Go](https://golang.org/dl/). 
-
-1. From your project's root directory, initiate the hugo module system if you haven't already:
-
-    ```bash
-    $ hugo mod init github.com/<your_user>/<your_project>
-    ```
-
-2. Add the theme's repo to your `config.yaml`:
-
-    ```yaml
-    theme: 
-       - github.com/nodejh/hugo-theme-mini
-    ```
-
-### 1.2 As Git Submodule
-
-1. Inside the folder of your Hugo site run:
-
-    ```bash
-    $ git submodule add https://github.com/nodejh/hugo-theme-mini.git themes/mini
-    ```
-
-2. Add the theme's directory to your `config.yaml`:
-
-    ```yaml
-   theme: mini
-    ```
-
-For more information read the official [setup guide](//gohugo.io/overview/installing/) of Hugo.
-
-
-## 2. Getting started
-
-After installing the theme successfully it requires a just a few more steps to get your site running.
-
-
-### 2.1 The config file
-
-Take a look inside the [`exampleSite`](https://github.com/nodejh/hugo-theme-mini/tree/master/exampleSite) folder of this theme. You'll find a file called [`config.yaml`](https://github.com/nodejh/hugo-theme-mini/blob/master/exampleSite/config.yaml). To use it, copy the [`config.yaml`](https://github.com/nodejh/hugo-theme-mini/blob/master/exampleSite/config.yaml) in the root folder of your Hugo site. Feel free to change the strings in this theme.
-
-> ⚠️ You may need to delete the line: `themesDir: ../../` 
-
-### 2.2 Default Content Language
-
-You can set default content language by `defaultContentLanguage`:
+Edit [`data/stream.yaml`](data/stream.yaml) — newest entry on top:
 
 ```yaml
-defaultContentLanguage: en
+- date: Mar 2026          # freeform display text
+  text: Something happened  # markdown ok
+  link: https://example.com # optional, renders a small arrow
 ```
 
-Default is `en`. Now support:
+Commit and push. No submodule involved.
 
-- `en`: English
-- `zh`: Chinese
-- `nl`: Dutch 
-- `fr`: French
-- `es`: Spanish
-- `da`: Danish
-
-More about multiple languages: [Multilingual Mode](https://gohugo.io/content-management/multilingual/).
-
-### 2.3 Add Comments
-
-To enable comments, add following to your config file:
-
-- Disqus shortname: `disqusShortname: your-disqus-shortname`
-- Enable Comment:
-
-    ```yaml
-    params:
-      enableComments: true
-    ```
-
-### 2.4 Google Analytics
-
-To enable google analytics, add following to your config file:
-
-- Google Analytics ID: `googleAnalytics: your-google-analytics-id`
-- Enable Google Analytics:
-
-    ```yaml
-    params:
-      enableGoogleAnalytics: true
-    ```
-
-### 2.5 Logo and favicon
-
-You can replace the log in the top of each page and favicon with your own images. To do that put your own logo and favicon into the `images` directory of your website static directory, then named them `avatar.png` and `favicon.ico`. For example:
-
-```
-- content
-- static
-└── images
-    ├── avatar.png
-    └── favicon.ico
-```
-
-### 2.6 Nearly finished
-
-In order to see your site in action, run Hugo's built-in local server.
+### Published a new Substack post?
 
 ```bash
-$ hugo server
+./scripts/refresh-feed.sh
 ```
 
-Now enter http://localhost:1313 in the address bar of your browser.
+`/blogs` is an on-site index of the Substack feed (https://zalakb.substack.com).
+Substack's CDN blocks GitHub Actions IPs, so CI cannot fetch the feed itself;
+a snapshot is committed at `assets/substack-feed.xml` and this script
+refreshes it, commits, and pushes (deploys automatically). CI still tries a
+best-effort refresh on every build in case Substack ever unblocks Actions.
 
-### 2.7 Production
+### Change the bio / homepage text
 
-To run in production (e.g. to have Google Analytics show up), run HUGO_ENV=production before your build command. For example:
+Edit `themes/mini/layouts/partials/info.html`, then:
 
 ```bash
-HUGO_ENV=production hugo
+cd themes/mini
+git checkout main && git commit -am "Update bio" && git push
+cd ../..   # back to site repo
+git commit -am "Bump theme" themes/mini && git push
 ```
 
-Note: The above command will not work on Windows. If you are running a Windows OS, use the below command:
+## Local development
 
 ```bash
-set HUGO_ENV=production
-hugo
+git clone --recurse-submodules git@github.com:ZalakBhojani/ZalakBhojani.github.io.git
+hugo server        # http://localhost:1313
 ```
 
+The submodule is private — cloning it needs credentials for the
+`ZalakBhojani` account. Built with Hugo extended 0.115.4 (version pinned in
+`.github/workflows/hugo.yaml`).
 
-## 3. Optional Configuration
+## Deployment
 
-### 3.1 Table of Content
+Push to `main` → `.github/workflows/hugo.yaml` builds and deploys.
+Also runs weekly (Mon 06:00 UTC) and via manual dispatch.
+Pages source is set to **GitHub Actions** (repo Settings → Pages).
 
-To enable table of content, you could set `showToc` to `true`.
+### Things that will break the site silently one day
 
-For example:
-
-```yaml
-showToc: true
-```
-
-### 3.2 Disable Comments on a single post
-
-You can set `enableComments` to `false` in front matter to disable disqus comments on a single post.
-
-For example:
-
-```yaml
----
-title: Some title
-enableComments: false
----
-```
-
-### 3.3 Custom CSS and JS
-
-You can put your custom css and js files to `static` directory, or use remote css and js files which start with `http://` or `https://`.
-
-For example:
-
-```yaml
-customCSS:
-  - css/custom.css # local css in `static/css/custom.css`
-  - https://example.com/custom.css # remote css
-customJS:
-  - js/custom.js # local js in `static/js/custom.js`
-  - https://example.com/custom.js # remote js
-```
-
-### 3.4 Math Typesetting
-
-Mathematical notation is enabled by [KaTeX](https://katex.org/).
-
-- To enable KaTex globally set the parameter `math` to `true` in project’s configuration
-- To enable KaTex on a per page basis include the parameter `math` to `true` in content files
-
-### 3.5 Hidden Post Summary in Home Page 
-
-To hidden post summary in home page, you could set `hiddenPostSummaryInHomePage` to `true`, default is `false`.
-
-For example:
-
-```yaml
-hiddenPostSummaryInHomePage: true
-```
-
-## License
-
-[MIT](https://github.com/nodejh/hugo-theme-mini/blob/master/LICENSE.md)
+- **The `PAT` repo secret expires ~Sept 2027.** It is a fine-grained token
+  with read access to this repo and the theme fork (needed because the fork
+  is private). When it expires, every deploy fails at checkout. Renew at
+  GitHub → Settings → Developer settings → Fine-grained tokens, then update
+  the secret: `gh secret set PAT --repo ZalakBhojani/ZalakBhojani.github.io`.
+  (Making the theme fork public removes this failure mode entirely.)
+- **Scheduled workflows get disabled after ~60 days without repo activity.**
+  GitHub emails a warning; one click re-enables.
+- **Making this repo private unpublishes the site** (free plan).
