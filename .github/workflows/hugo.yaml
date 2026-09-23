@@ -55,13 +55,15 @@ jobs:
         uses: actions/configure-pages@v5
       - name: Install Node.js dependencies
         run: "[[ -f package-lock.json || -f npm-shrinkwrap.json ]] && npm ci || true"
-      - name: Fetch Substack feed
+      - name: Refresh Substack feed (best effort)
         run: |
-          mkdir -p assets
+          # Substack blocks Actions runner IPs; when this fails, the
+          # committed assets/substack-feed.xml snapshot is used instead.
           curl -fsSL --retry 3 --max-time 30 \
             -A "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0 Safari/537.36" \
-            -o assets/substack-feed.xml https://zalakb.substack.com/feed \
-            || echo "feed fetch failed; /blogs will show the fallback link"
+            -o /tmp/substack-feed.xml https://zalakb.substack.com/feed \
+            && mv /tmp/substack-feed.xml assets/substack-feed.xml \
+            || echo "fetch blocked; using committed snapshot"
       - name: Build with Hugo
         env:
           # For maximum backward compatibility with Hugo modules
