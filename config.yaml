@@ -36,6 +36,7 @@ social:
   # e.g.
   github: https://github.com/ZalakBhojani
   twitter: https://twitter.com/Zalak00
+  linkedin: https://www.linkedin.com/in/zalak-bhojani/
   # stackoverflow: your-github-link
   # facebook: your-facebook-link
 
@@ -78,7 +79,7 @@ params:
   links:
     ## e.g.
     - name: Blogs
-      path: /blogs
+      path: https://zalakb.substack.com/
 
     - name: Stream
       path: /stream
