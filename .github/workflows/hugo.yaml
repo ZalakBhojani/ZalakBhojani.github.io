@@ -55,6 +55,13 @@ jobs:
         uses: actions/configure-pages@v5
       - name: Install Node.js dependencies
         run: "[[ -f package-lock.json || -f npm-shrinkwrap.json ]] && npm ci || true"
+      - name: Fetch Substack feed
+        run: |
+          mkdir -p assets
+          curl -fsSL --retry 3 --max-time 30 \
+            -A "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0 Safari/537.36" \
+            -o assets/substack-feed.xml https://zalakb.substack.com/feed \
+            || echo "feed fetch failed; /blogs will show the fallback link"
       - name: Build with Hugo
         env:
           # For maximum backward compatibility with Hugo modules
