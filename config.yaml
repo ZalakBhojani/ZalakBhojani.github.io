@@ -84,6 +84,9 @@ params:
     - name: Life
       path: /stream
 
+    - name: Status
+      path: /status
+
   # You can put your custom css and js to `static` directory, or use remote css and js files which start with `http://` or `https://`
   customCSS:
     ## e.g.
