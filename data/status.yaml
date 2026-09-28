@@ -1,0 +1,38 @@
+# Config for the /status page (see layouts/status/single.html).
+#
+# Fill these in from your Healthchecks.io project → Settings → Badges page.
+# Badge URLs are per-project (not per-check secrets) and are meant to be
+# embedded publicly — see https://healthchecks.io/docs/badges/ — but they
+# are still "hard to guess", so treat this file the same way you'd treat
+# any other low-sensitivity, not-meant-to-be-scraped config: fine to commit,
+# just don't advertise it beyond what the page itself already shows.
+#
+# Each host below corresponds to one Healthchecks.io check, tagged with the
+# host's name, created by the `heartbeat` Ansible role in ../homelab
+# (ansible/roles/heartbeat). ".json3" badges report three states
+# (up / late / down); ".svg" is the same status as a always-rendering image
+# that needs no JavaScript or CORS support to display.
+#
+# To wire this up for real:
+#   1. In Healthchecks.io, tag each host's check with its node_name
+#      (e.g. "node-a") and create a project-wide badge for that tag.
+#   2. Copy the badge key + signature from Settings → Badges and paste the
+#      resulting URLs below, one entry per host.
+#   3. Optionally add a badge for a "fleet" tag applied to every check, for
+#      the top-line "N/3 hosts up" summary.
+
+fleet:
+  name: "Homelab Fleet"
+  svg_url: "https://healthchecks.io/badge/REPLACE_WITH_BADGE_KEY/REPLACE_WITH_SIGNATURE/fleet.svg"
+  json3_url: "https://healthchecks.io/badge/REPLACE_WITH_BADGE_KEY/REPLACE_WITH_SIGNATURE/fleet.json3"
+
+hosts:
+  - name: "node-a"
+    svg_url: "https://healthchecks.io/badge/REPLACE_WITH_BADGE_KEY/REPLACE_WITH_SIGNATURE/node-a.svg"
+    json3_url: "https://healthchecks.io/badge/REPLACE_WITH_BADGE_KEY/REPLACE_WITH_SIGNATURE/node-a.json3"
+  - name: "node-b"
+    svg_url: "https://healthchecks.io/badge/REPLACE_WITH_BADGE_KEY/REPLACE_WITH_SIGNATURE/node-b.svg"
+    json3_url: "https://healthchecks.io/badge/REPLACE_WITH_BADGE_KEY/REPLACE_WITH_SIGNATURE/node-b.json3"
+  - name: "node-c"
+    svg_url: "https://healthchecks.io/badge/REPLACE_WITH_BADGE_KEY/REPLACE_WITH_SIGNATURE/node-c.svg"
+    json3_url: "https://healthchecks.io/badge/REPLACE_WITH_BADGE_KEY/REPLACE_WITH_SIGNATURE/node-c.json3"

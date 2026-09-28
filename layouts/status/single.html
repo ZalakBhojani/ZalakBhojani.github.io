@@ -1,0 +1,240 @@
+{{ define "main" }}
+{{ $status := .Site.Data.status }}
+
+<section id="single">
+  <h1 class="title">{{ .Title }}</h1>
+
+  <div class="content">
+    <p>
+      This page reports whether the homelab fleet is up. It is a static
+      page hosted on GitHub Pages, and the status it shows comes from
+      <a href="https://healthchecks.io" target="_blank" rel="noopener">Healthchecks.io</a>,
+      not from the homelab itself — so if the entire fleet loses power,
+      this page still loads and still shows the fleet as down, instead of
+      going blank along with everything else. Each host pings its own
+      Healthchecks.io check once a minute (a "dead man's switch"); if the
+      pings stop, the check — and this page — flips to down.
+    </p>
+
+    <div id="status-widget">
+      <div id="status-fleet" class="status-row status-row--fleet">
+        <img
+          class="status-badge"
+          alt="{{ with $status.fleet }}{{ .name }}{{ end }} badge"
+          src="{{ with $status.fleet }}{{ .svg_url }}{{ end }}"
+        />
+        <span class="status-name">{{ with $status.fleet }}{{ .name }}{{ end }}</span>
+        <span class="status-text status-text--checking" id="status-text-fleet" data-json3="{{ with $status.fleet }}{{ .json3_url }}{{ end }}">
+          checking…
+        </span>
+      </div>
+
+      <ul class="status-hosts">
+        {{ range $i, $host := $status.hosts }}
+        <li class="status-row" id="status-row-host-{{ $i }}">
+          <img
+            class="status-badge"
+            alt="{{ $host.name }} badge"
+            src="{{ $host.svg_url }}"
+          />
+          <span class="status-name">{{ $host.name }}</span>
+          <span class="status-text status-text--checking" id="status-text-host-{{ $i }}" data-json3="{{ $host.json3_url }}">
+            checking…
+          </span>
+        </li>
+        {{ end }}
+      </ul>
+
+      <div id="status-meta">
+        <span id="status-last-checked">Last checked: never (badge images above are always live)</span>
+        <button type="button" id="status-refresh-btn">Refresh now</button>
+      </div>
+
+      <p id="status-fallback-note" class="status-footnote" hidden>
+        Live text status could not be fetched from Healthchecks.io in this
+        browser (its JSON badge endpoint may not allow cross-origin
+        requests, or the network blocked it). The colored badge images
+        above are still accurate and update on their own — they are plain
+        images, not JavaScript, so they work even if the text below them
+        does not.
+      </p>
+    </div>
+  </div>
+</section>
+
+<style>
+  #status-widget {
+    margin-top: 1.5rem;
+    border: 1px solid var(--border-color, #4a4d4f);
+    border-radius: 12px;
+    padding: 1rem 1.25rem;
+  }
+
+  .status-row {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.4rem 0;
+  }
+
+  .status-row--fleet {
+    border-bottom: 1px dashed var(--border-color, #4a4d4f);
+    margin-bottom: 0.5rem;
+    padding-bottom: 0.75rem;
+    font-weight: 600;
+  }
+
+  .status-hosts {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .status-badge {
+    height: 20px;
+  }
+
+  .status-name {
+    min-width: 6rem;
+    display: inline-block;
+  }
+
+  .status-text {
+    font-size: 0.9em;
+  }
+
+  .status-text--up {
+    color: #028b75;
+  }
+
+  .status-text--late {
+    color: #b8860b;
+  }
+
+  .status-text--down {
+    color: #c0392b;
+  }
+
+  .status-text--checking,
+  .status-text--unknown {
+    color: var(--footer-text, #888);
+  }
+
+  #status-meta {
+    margin-top: 0.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    font-size: 0.85em;
+    color: var(--footer-text, #888);
+  }
+
+  #status-refresh-btn {
+    font-size: 0.85em;
+    padding: 0.25rem 0.6rem;
+    cursor: pointer;
+  }
+
+  .status-footnote {
+    font-size: 0.85em;
+    color: var(--footer-text, #888);
+    margin-top: 0.75rem;
+  }
+</style>
+
+<script>
+  (function () {
+    // Client-side enhancement only: reads Healthchecks.io's public ".json3"
+    // badge endpoints (three-state: up / late / down) to show live text
+    // next to each static SVG badge. If this fetch is ever blocked
+    // (CORS, offline, Healthchecks.io down), the SVG badge images above
+    // still render on their own since they are plain <img> tags — this
+    // script only adds a nicer text summary on top of that.
+    var fleetEl = document.getElementById('status-text-fleet');
+    var hostEls = Array.prototype.slice.call(
+      document.querySelectorAll('[id^="status-text-host-"]')
+    );
+    var allEls = fleetEl ? [fleetEl].concat(hostEls) : hostEls;
+    var fallbackNote = document.getElementById('status-fallback-note');
+    var lastCheckedEl = document.getElementById('status-last-checked');
+    var refreshBtn = document.getElementById('status-refresh-btn');
+    var REFRESH_MS = 60000; // matches the heartbeat's one-ping-per-minute cadence
+    var timer = null;
+
+    function applyState(el, state) {
+      el.classList.remove(
+        'status-text--checking',
+        'status-text--up',
+        'status-text--late',
+        'status-text--down',
+        'status-text--unknown'
+      );
+      el.classList.add('status-text--' + state);
+    }
+
+    function describe(data) {
+      // Healthchecks.io json3 badge shape: { status: "up"|"late"|"down", total, grace, down, late, ... }
+      if (!data || typeof data.status !== 'string') return { state: 'unknown', text: 'unknown' };
+      var state = data.status;
+      var extra = '';
+      if (typeof data.total === 'number' && data.total > 1) {
+        var ok = data.total - (data.down || 0) - (data.late || 0);
+        extra = ' (' + ok + '/' + data.total + ' checks up)';
+      }
+      return { state: state, text: state + extra };
+    }
+
+    function refreshOne(el) {
+      var url = el.getAttribute('data-json3');
+      if (!url || url.indexOf('REPLACE_WITH_BADGE_KEY') !== -1) {
+        el.textContent = 'not configured yet';
+        applyState(el, 'unknown');
+        return Promise.resolve({ attempted: false, success: false });
+      }
+      return fetch(url, { cache: 'no-store' })
+        .then(function (res) {
+          if (!res.ok) throw new Error('bad response ' + res.status);
+          return res.json();
+        })
+        .then(function (data) {
+          var described = describe(data);
+          el.textContent = described.text;
+          applyState(el, described.state === 'up' || described.state === 'late' || described.state === 'down' ? described.state : 'unknown');
+          return { attempted: true, success: true };
+        })
+        .catch(function () {
+          el.textContent = 'unavailable';
+          applyState(el, 'unknown');
+          return { attempted: true, success: false };
+        });
+    }
+
+    function refreshAll() {
+      if (!allEls.length) return;
+      Promise.all(allEls.map(refreshOne)).then(function (results) {
+        var anyAttempted = results.some(function (r) { return r.attempted; });
+        var anySucceeded = results.some(function (r) { return r.success; });
+        // Only warn about CORS/network trouble when we actually tried a
+        // real badge URL and it failed — not simply because status.yaml
+        // still has placeholder URLs (that case is already conveyed by
+        // each row's "not configured yet" text).
+        if (fallbackNote) fallbackNote.hidden = !anyAttempted || anySucceeded;
+        if (lastCheckedEl) {
+          lastCheckedEl.textContent = 'Last checked: ' + new Date().toLocaleTimeString();
+        }
+      });
+    }
+
+    if (allEls.length) {
+      refreshAll();
+      timer = window.setInterval(refreshAll, REFRESH_MS);
+    }
+
+    if (refreshBtn) {
+      refreshBtn.addEventListener('click', refreshAll);
+    }
+  })();
+</script>
+
+{{ end }}
